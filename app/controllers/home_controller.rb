@@ -18,6 +18,7 @@ class HomeController < ApplicationController
           phone_number: contact["phone"].present? && contact["phone"]["0"].present? ? contact["phone"]["0"]["number"] : "",
           job_title: contact["job_title"] ? contact["job_title"] : "",
           dob: contact["dob"] ? contact["dob"] : "",
+          source: contact["source"]
         }
 
         if contact["addresses"].present? && (address = contact["addresses"]["0"]).present?
