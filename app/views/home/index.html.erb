@@ -1,0 +1,101 @@
+
+<style type="text/css">
+  .user-header{
+    margin-top: 20px;
+    margin-left: 22%;
+    margin-bottom: 15px;
+  }
+
+  .position {
+    font-size: 12px;
+    font-family: serif;
+    line-height: 4px;
+  }
+
+  .address {
+    font-size: 10px;
+    font-family: cursive;
+    line-height: 0px;
+  }
+
+  .contacts-card{
+    border-radius: 50px;
+    max-width: 60%;
+    max-height: 80%;
+    border: 2px solid rgba(0, 0, 0, 0.125);
+  }
+</style>
+
+<div class="container">
+  <div class="card" style="margin: 10px;">
+
+    <div class="row">
+      <div class="col-11 user-header">
+        <div class="card" style="max-width: 60%">
+          <div class="card-body">
+            <div class="row" style="margin-left: 15px;">
+              <div class="col-sm-2">
+                <img alt="Blank Profile" class="rounded-circle" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" style=" height: 50px;">
+              </div>
+
+              <div class="col-sm-5" style="line-height: 4px;">
+                <p class="name" style="font-weight: 700">John Smith</p>
+                <p class="position">Senior Software Engineer</p>
+                <p class="address">Palo Alto, CA</p>
+              </div>
+
+              <div class="col-sm-5 text-right">
+                <a href="#" class="btn btn-danger cloudsponge-launch" style="border-radius: 20px; font-size: 12px;">Invite Contacts</a><br/>
+                <a href="#" style="font-size: 12px; margin-left: 25px;">Edit Profile <i class="fas fa-pencil-alt" style="margin-left: 2px"></i></a><br/>
+                <a href="#" style="font-size: 12px;">Add New Connections + </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <textarea style="display: none" class="cloudsponge-contacts" id="data-area"></textarea> -->
+
+
+      <div class="col-10" style="margin-left: 22%; margin-bottom: 0px;">
+        <div class="row">
+          <div class="col-sm-6" style="font-weight: 700">
+            <p>My Connections</p>
+          </div>
+
+          <div class="col-sm-4 text-left" style="font-size: 13px;">
+            <p><%= "#{@contacts.count} Connections" %> </p>
+          </div>
+        </div>
+      </div>
+
+
+    <% @contacts.each do |contact|%>
+    <div class="row">
+      <div class="col-11" style="margin-left: 22%; margin-bottom: 0px;">
+        <div class="card contacts-card">
+          <div class="card-body">
+            <div class="row" style="margin-left: 15px;">
+              <div class="col-sm-2">
+                <img alt="Blank Profile" class="rounded-circle" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" style=" height: 50px; margin-top: -10px;">
+              </div>
+
+              <div class="col-sm-6" style="line-height: 4px;">
+                <p class="name" style="font-weight: 700"><%= contact.full_name.present? ? contact.full_name : "Michale Miller" %></p>
+                <p class="position"><%= contact.job_title.present? ?  contact.job_title : "Web Developer" %></p>
+                <p class="address"><%= contact.full_address || "San Francisco, CA" %></p>
+              </div>
+
+              <div class="col-sm-4 text-right">
+                <a href="#" class="btn btn-primary" style="border-radius: 20px; background-color: #0855a9;">Message</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cloudsponage</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://api.cloudsponge.com/widget/iHO8cXuLzM4W7bV_XmG5Qg.js"></script>
+
+    <script>
+      cloudsponge.init({
+
+        afterSubmitContacts: function(contacts, source, owner) {
+          $.ajax({
+            url: '/home/contact',
+            method: 'POST',
+            data: {contacts: contacts, source: source, owner: owner},
+            success: function(){
+              window.location.href = '/home'
+            },
+            error: function(){
+              alert('Something went wrong')
+            }
+          })
+          // $('#exampleContacts').text(JSON.stringify(contacts));
+        }
+
+        // webhooks: {
+        //   afterSubmitContacts: 'http://localhost:3000/home/contact'
+        // }
+      })
+    </script>
+
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
